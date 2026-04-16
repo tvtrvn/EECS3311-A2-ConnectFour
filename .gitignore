@@ -1,0 +1,9 @@
+# Compiled class files
+bin/
+
+# OS files
+.DS_Store
+
+# IDE settings (optional — include .classpath/.project if you want Eclipse portability)
+# .classpath
+# .project

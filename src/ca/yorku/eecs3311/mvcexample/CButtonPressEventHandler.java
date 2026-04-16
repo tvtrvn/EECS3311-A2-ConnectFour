@@ -1,0 +1,21 @@
+package ca.yorku.eecs3311.mvcexample;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+
+public class CButtonPressEventHandler implements EventHandler<ActionEvent> {
+	private MCounter mcounter;
+	public CButtonPressEventHandler(MCounter mcounter) {
+		this.mcounter=mcounter;
+	}
+	
+	@Override
+	public void handle(ActionEvent event) {
+		Button source=(Button)event.getSource();
+		if(source.getText()=="increment") {
+			mcounter.increment();
+		} else if(source.getText()=="decrement") {
+			mcounter.decrement();
+		}
+	}
+}

@@ -1,0 +1,191 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>EECS3311 A2 - Connect Four GUI (JavaFX MVC)</title>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; line-height: 1.45; margin: 24px; color: #111; }
+    code, pre, xmp { background: #f6f6f6; padding: 2px 4px; border-radius: 4px; }
+    pre, xmp { padding: 10px; overflow-x: auto; }
+    h1, h2, h3 { margin-bottom: 0.3em; }
+    table { border-collapse: collapse; margin: 10px 0 20px 0; width: 100%; }
+    th, td { border: 1px solid #999; padding: 8px; vertical-align: top; }
+    th { background: #efefef; text-align: left; }
+    .note { background: #faf7e8; border-left: 5px solid #c9a200; padding: 10px 12px; margin: 16px 0; }
+    .todo { background: #eef6ff; border-left: 5px solid #4b88d8; padding: 10px 12px; margin: 16px 0; }
+    .small { font-size: 0.95em; color: #333; }
+  </style>
+</head>
+<body>
+<div class="content">
+
+<h2>EECS3311 Assignment 2<br/>Connect Four GUI in JavaFX using MVC and Design Patterns</h2>
+
+<table>
+<tr><th>Due</th><td>November 30th by 11:59 pm</td></tr>
+<tr><th>Submit</th><td>A zipped copy of your entire project folder and a short narrated demo video (about 5 minutes) showing your GUI, main features, and a brief explanation of the design patterns used.</td></tr>
+<tr><th>Starter project</th><td>This starter preserves the original <code>util</code> and <code>mvcexample</code> packages from A2, but replaces Othello with <strong>Connect Four</strong>.</td></tr>
+<tr><th>Important instruction</th><td>Search the project for <code>TODO A2-</code>. These markers show the expected places where you should add, refactor, or complete code.</td></tr>
+</table>
+
+<h3>Overview</h3>
+<p>
+In this assignment you will transform the provided starter into a complete JavaFX implementation of Connect Four.
+The emphasis is not only on making the program work, but on organizing the solution using <strong>MVC</strong>
+plus the required design patterns.
+</p>
+
+<p>
+The final program should support a graphical Connect Four game, multiple player/opponent types, undo/redo,
+and save/load functionality. Your code should be clean, modular, and easy to extend.
+</p>
+
+<div class="note">
+  <strong>Design goal:</strong> your solution should show clear separation of responsibilities. Avoid giant classes,
+  duplicated logic, and view code mixed into the model.
+</div>
+
+<h3>Required features</h3>
+<ul>
+  <li>JavaFX GUI for Connect Four</li>
+  <li>Use the <strong>MVC pattern</strong> to organize the application</li>
+  <li>Human vs Human mode</li>
+  <li>Support for other opponent/player types through the <strong>Strategy pattern</strong></li>
+  <li>GUI controls allowing the user to select player/opponent types</li>
+  <li>Undo and redo using the <strong>Command pattern</strong></li>
+  <li>Game restart/reset</li>
+  <li>Save game to file</li>
+  <li>Load game from file</li>
+  <li>Status area showing messages such as current player, winner, draw, invalid move, and loaded/saved state</li>
+  <li>JUnit tests for important parts of the model</li>
+</ul>
+
+<h3>Required patterns and architectural expectations</h3>
+<table>
+<tr><th>Pattern / idea</th><th>Expectation in this assignment</th></tr>
+<tr><td><strong>MVC</strong></td><td>The model must represent game state and rules; the view displays the state; controllers/event handlers react to GUI input and coordinate actions.</td></tr>
+<tr><td><strong>Strategy</strong></td><td>Different player behaviours such as human, random, greedy, or other strategies should be swappable without rewriting the rest of the game.</td></tr>
+<tr><td><strong>Command</strong></td><td>Moves should be represented as commands, making undo and redo natural and structured rather than ad hoc.</td></tr>
+<tr><td><strong>Observer / notifications</strong></td><td>The provided observable/observer utilities may be used to keep views synchronized with the model.</td></tr>
+</table>
+
+<h3>Starter project notes</h3>
+<ul>
+  <li><code>ca.yorku.eecs3311.mvcexample</code> is intentionally preserved. Study it before changing the Connect Four code.</li>
+  <li><code>ca.yorku.eecs3311.connect4</code> contains the Connect Four starter, including explicit extension points.</li>
+  <li>The starter is intentionally incomplete. You are expected to refactor as needed.</li>
+  <li>Do not simply place all logic in one JavaFX application class. A large part of the assignment is architectural quality.</li>
+</ul>
+
+<div class="todo">
+  <strong>Where to begin:</strong>
+  <ol>
+    <li>Run the JavaFX starter.</li>
+    <li>Search for <code>TODO A2-</code>.</li>
+    <li>Study how the current classes divide responsibilities.</li>
+    <li>Complete the model and view/controller features in small steps.</li>
+  </ol>
+</div>
+
+<h3>Files students should inspect first</h3>
+<ul>
+  <li><code>src/ca/yorku/eecs3311/connect4/viewcontroller/ConnectFourApplication.java</code></li>
+  <li><code>src/ca/yorku/eecs3311/connect4/viewcontroller/BoardView.java</code></li>
+  <li><code>src/ca/yorku/eecs3311/connect4/viewcontroller/DropTokenEventHandler.java</code></li>
+  <li><code>src/ca/yorku/eecs3311/connect4/model/ConnectFour.java</code></li>
+  <li><code>src/ca/yorku/eecs3311/connect4/model/CommandManager.java</code></li>
+  <li><code>src/ca/yorku/eecs3311/connect4/model/OpponentFactory.java</code></li>
+</ul>
+
+<h3>Suggested work plan</h3>
+<ol>
+  <li>Study <code>mvcexample</code> and the starter classes.</li>
+  <li>Complete the model logic and ensure the board state is correct.</li>
+  <li>Improve board rendering and status updates in JavaFX.</li>
+  <li>Clean up controller responsibilities and event handling.</li>
+  <li>Implement the Strategy-based player/opponent selection.</li>
+  <li>Implement Command-based undo/redo.</li>
+  <li>Add save/load support.</li>
+  <li>Expand the tests.</li>
+  <li>Refactor for readability, maintainability, and pattern clarity.</li>
+</ol>
+
+<h3>Marking rubric (100 marks)</h3>
+<table>
+<tr><th>Category</th><th>Marks</th><th>What we are looking for</th></tr>
+<tr>
+  <td><strong>MVC architecture</strong></td>
+  <td>25</td>
+  <td>
+    Clear separation between model, view, and controller/event-handling code; minimal coupling; no major architectural confusion; model not dependent on JavaFX presentation details.
+  </td>
+</tr>
+<tr>
+  <td><strong>Strategy pattern</strong></td>
+  <td>15</td>
+  <td>
+    Opponent/player types are represented cleanly as interchangeable strategies; selection is supported through the GUI; extension to new strategies is straightforward.
+  </td>
+</tr>
+<tr>
+  <td><strong>Command pattern / undo-redo</strong></td>
+  <td>15</td>
+  <td>
+    Moves are encapsulated cleanly as commands; undo/redo behaves correctly and consistently; implementation is structured and not hard-coded in the GUI.
+  </td>
+</tr>
+<tr>
+  <td><strong>Connect Four functionality and correctness</strong></td>
+  <td>20</td>
+  <td>
+    Valid move handling, win/draw detection, turn changes, restart behaviour, and general game correctness; save/load works reasonably and restores game state correctly.
+  </td>
+</tr>
+<tr>
+  <td><strong>JavaFX GUI quality</strong></td>
+  <td>10</td>
+  <td>
+    GUI is functional, readable, and easy to use; board updates correctly; controls and status information are clear.
+  </td>
+</tr>
+<tr>
+  <td><strong>Code quality and documentation</strong></td>
+  <td>10</td>
+  <td>
+    Meaningful naming, appropriate decomposition into classes/methods, useful comments/JavaDoc, and a brief explanation of how the classes participate in MVC and the required patterns.
+  </td>
+</tr>
+<tr>
+  <td><strong>Testing</strong></td>
+  <td>5</td>
+  <td>
+    JUnit tests cover core model behaviour and are expanded beyond the supplied starter tests.
+  </td>
+</tr>
+</table>
+
+<h3>Rubric interpretation</h3>
+<ul>
+  <li><strong>Excellent</strong>: patterns are clearly recognizable, responsibilities are well separated, and the code is easy to extend.</li>
+  <li><strong>Good</strong>: solution works well and patterns are mostly clear, with only minor design or code-quality issues.</li>
+  <li><strong>Satisfactory</strong>: core features work, but architectural separation or pattern usage is partial or inconsistent.</li>
+  <li><strong>Weak</strong>: major features missing, or the code works only in a fragile or poorly organized way.</li>
+</ul>
+
+<h3>What to include in your demo video</h3>
+<ul>
+  <li>Starting a new game</li>
+  <li>Playing several moves</li>
+  <li>Changing player/opponent type</li>
+  <li>Undo and redo</li>
+  <li>Save and load</li>
+  <li>A short explanation of where MVC, Strategy, and Command appear in your code</li>
+</ul>
+
+<p class="small">
+Note: the exact class names and final design choices are up to you, but your implementation should clearly reflect the required patterns and architecture.
+</p>
+
+</div>
+</body>
+</html>
