@@ -7,3 +7,6 @@ bin/
 # IDE settings (optional — include .classpath/.project if you want Eclipse portability)
 # .classpath
 # .project
+.gitnexus
+.claude/skills/gitnexus/
+.claude/settings.local.json
